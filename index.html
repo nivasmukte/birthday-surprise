@@ -1,0 +1,931 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3, #a18cd1);
+    color: white;
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 20px;
+    animation: floatUp 7s linear infinite;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Main container */
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+/* Pages */
+.page {
+    display: none;
+    width: 100%;
+    text-align: center;
+    animation: pageIn 0.7s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes pageIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Card */
+.card {
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 30px;
+    padding: 35px 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* Headings */
+h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* Emoji */
+.big-heart {
+    font-size: 70px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* Buttons */
+button {
+    border: none;
+    padding: 15px 25px;
+    margin: 8px;
+    border-radius: 50px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #d6336c;
+    background: white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: 0.25s;
+}
+
+button:hover {
+    transform: scale(1.06);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+.next-btn {
+    margin-top: 15px;
+    background: #ff3f81;
+    color: white;
+}
+
+/* Photo */
+.photo {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 25px;
+    margin: 20px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Letter */
+.letter {
+    background: rgba(255,255,255,0.92);
+    color: #8a2850;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: left;
+    line-height: 1.8;
+    font-size: 17px;
+    min-height: 180px;
+}
+
+/* Cake */
+.cake {
+    font-size: 100px;
+    animation: cakeBounce 1.5s infinite;
+}
+
+@keyframes cakeBounce {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* Final */
+.final-message {
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1.8;
+}
+
+/* Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+
+    h1 {
+        font-size: 34px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .card {
+        padding: 30px 18px;
+    }
+
+    button {
+        width: 90%;
+        margin: 6px auto;
+    }
+
+    .gallery img {
+        height: 140px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- ======================================================
+     ❤️ CUSTOMIZE YOUR SURPRISE HERE
+====================================================== -->
+
+<script>
+
+/* CHANGE YOUR WIFE'S NAME HERE */
+const wifeName = "Nisha";
+
+/* CHANGE YOUR NAME HERE */
+const yourName = "Nivas";
+
+/* CHANGE THE BIRTHDAY MESSAGE HERE */
+const birthdayMessage = `
+My Love,
+
+Happy Birthday to the most beautiful person in my life. ❤️
+
+You make my ordinary days feel special and bring so much happiness into my life.
+
+I may not always say it perfectly, but I hope you always know how much you mean to me.
+
+I am so lucky to have you.
+
+I love you more than words can explain.
+
+Happy Birthday once again, my love. ❤️
+
+Forever yours,
+Your Husband
+`;
+
+
+/* ======================================================
+   📸 ADD YOUR PHOTOS HERE
+======================================================
+
+   Put your photos in the SAME FOLDER as index.html.
+
+   Example:
+
+   birthday/
+      index.html
+      photo1.jpg
+      photo2.jpg
+      photo3.jpg
+
+   Then write:
+
+   "photo1.jpg"
+   "photo2.jpg"
+   "photo3.jpg"
+
+====================================================== */
+
+const photos = [
+    "photo1.jpeg",
+    "photo2.jpeg",
+    "photo3.jpeg",
+    "photo4.jpeg"
+];
+
+
+/* ======================================================
+   🎵 OPTIONAL YOUTUBE VIDEO
+======================================================
+
+   Put your YouTube link here.
+
+   Example:
+   const songLink = "https://www.youtube.com/watch?v=XXXXX";
+
+====================================================== */
+
+const songLink = "";
+
+
+/* ======================================================
+   END OF CUSTOMIZATION
+====================================================== */
+
+</script>
+
+
+<!-- Floating hearts -->
+<div class="heart" style="left:10%; animation-delay:0s;">❤️</div>
+<div class="heart" style="left:25%; animation-delay:2s;">💕</div>
+<div class="heart" style="left:45%; animation-delay:4s;">💗</div>
+<div class="heart" style="left:65%; animation-delay:1s;">💖</div>
+<div class="heart" style="left:85%; animation-delay:3s;">💞</div>
+
+
+<div class="container">
+
+
+<!-- ======================================================
+     PAGE 1
+====================================================== -->
+
+<section class="page active" id="page1">
+
+<div class="card">
+
+<div class="big-heart">❤️</div>
+
+<h1>Hey <span class="wife-name"></span>!</h1>
+
+<p>
+I made something special for you...
+</p>
+
+<p>
+But you have to complete a little journey first. 😏
+</p>
+
+<button onclick="nextPage()">
+Start the Surprise 🎁
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     PAGE 2
+====================================================== -->
+
+<section class="page" id="page2">
+
+<div class="card">
+
+<h2>Question #1 💕</h2>
+
+<p>
+Do you know how special you are to me?
+</p>
+
+<button onclick="answer1('wrong')">
+Very Special ❤️
+</button>
+
+<button onclick="answer1('wrong')">
+Extremely Special 💕
+</button>
+
+<button onclick="answer1('correct')">
+More Special Than You Can Imagine 🥰
+</button>
+
+<p id="answer1Text"></p>
+
+<button
+id="answer1Next"
+class="next-btn"
+style="display:none;"
+onclick="nextPage()">
+
+Continue ❤️
+
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     PAGE 3
+====================================================== -->
+
+<section class="page" id="page3">
+
+<div class="card">
+
+<h2>Question #2 😏</h2>
+
+<p>
+What do you think is my favourite thing about you?
+</p>
+
+<button onclick="answer2('smile')">
+Your Smile 😊
+</button>
+
+<button onclick="answer2('crazy')">
+Your Craziness 😂
+</button>
+
+<button onclick="answer2('everything')">
+EVERYTHING ABOUT YOU 🥰
+</button>
+
+<p id="answer2Text"></p>
+
+<button
+id="answer2Next"
+class="next-btn"
+style="display:none;"
+onclick="nextPage()">
+
+Next 💕
+
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     PAGE 4 — MINI GAME
+====================================================== -->
+
+<section class="page" id="page4">
+
+<div class="card">
+
+<h2>One More Question 😏</h2>
+
+<p>
+Who fell in love first?
+</p>
+
+<button onclick="loveAnswer('me')">
+Me 😎
+</button>
+
+<button onclick="loveAnswer('you')">
+You 😍
+</button>
+
+<button onclick="loveAnswer('both')">
+Both of Us ❤️
+</button>
+
+<p id="loveText"></p>
+
+<button
+id="loveNext"
+class="next-btn"
+style="display:none;"
+onclick="nextPage()">
+
+I Want More ❤️
+
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     PAGE 5 — PERSONAL MESSAGE
+====================================================== -->
+
+<section class="page" id="page5">
+
+<div class="card">
+
+<h2>A Little Message For You 💌</h2>
+
+<div class="letter">
+
+<p id="typedMessage"></p>
+
+</div>
+
+<button
+id="messageNext"
+class="next-btn"
+style="display:none;"
+onclick="nextPage()">
+
+Continue ❤️
+
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     PAGE 6 — BIRTHDAY
+====================================================== -->
+
+<section class="page" id="page6">
+
+<div class="card">
+
+<div class="cake">🎂</div>
+
+<h1>
+Happy Birthday
+</h1>
+
+<h2>
+<span class="wife-name"></span> ❤️
+</h2>
+
+<p>
+Today is your day...
+</p>
+
+<p>
+But honestly, every day is better because you are in my life. ❤️
+</p>
+
+<button onclick="showConfetti(); nextPage();">
+One Last Surprise 💝
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     PAGE 7 — FINAL SURPRISE
+====================================================== -->
+
+<section class="page" id="page7">
+
+<div class="card">
+
+<div class="big-heart">💖</div>
+
+<h1>
+For You ❤️
+</h1>
+
+<p class="final-message">
+
+You are my favourite person,
+my favourite memory,
+and my favourite future.
+
+<br><br>
+
+I would choose you,
+again and again,
+in every lifetime. ❤️
+
+</p>
+
+
+<!-- Photo Gallery -->
+
+<h2 style="margin-top:30px;">
+Our Memories 📸
+</h2>
+
+<div class="gallery" id="gallery"></div>
+
+
+<!-- Song -->
+
+<div id="songSection" style="margin-top:25px; display:none;">
+
+<button onclick="openSong()">
+🎵 Our Song
+</button>
+
+</div>
+
+
+<br>
+
+<p>
+Happy Birthday mine ❤️
+</p>
+
+<p>
+With all my love,
+<br>
+<span id="your-name"></span>
+</p>
+
+<button onclick="restart()">
+Replay Surprise 🔄
+</button>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+
+<script>
+
+/* ======================================================
+   PAGE NAVIGATION
+====================================================== */
+
+let currentPage = 1;
+
+function nextPage() {
+
+    document.getElementById("page" + currentPage)
+        .classList.remove("active");
+
+    currentPage++;
+
+    document.getElementById("page" + currentPage)
+        .classList.add("active");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    if(currentPage === 5) {
+        startTyping();
+    }
+
+    if(currentPage === 7) {
+        loadPhotos();
+    }
+}
+
+
+/* ======================================================
+   QUESTION 1
+====================================================== */
+
+function answer1(answer) {
+
+    const text = document.getElementById("answer1Text");
+
+    if(answer === "correct") {
+
+        text.innerHTML =
+        "That's right! 😘 But honestly, even that answer isn't enough to describe how special you are to me. ❤️";
+
+        document.getElementById("answer1Next")
+            .style.display = "inline-block";
+
+    } else {
+
+        text.innerHTML =
+        "Hmm... nice try 😏 Think again!";
+
+    }
+}
+
+
+/* ======================================================
+   QUESTION 2
+====================================================== */
+
+function answer2(answer) {
+
+    const text = document.getElementById("answer2Text");
+
+    if(answer === "everything") {
+
+        text.innerHTML =
+        "YES! ❤️ Finally someone got the correct answer! 😂 You are amazing in every possible way.";
+
+        document.getElementById("answer2Next")
+            .style.display = "inline-block";
+
+    } else {
+
+        text.innerHTML =
+        "That's definitely one of the reasons... but you're missing something. 😏";
+
+    }
+}
+
+
+/* ======================================================
+   LOVE QUESTION
+====================================================== */
+
+function loveAnswer(answer) {
+
+    const text = document.getElementById("loveText");
+
+    if(answer === "both") {
+
+        text.innerHTML =
+        "Correct! ❤️ Maybe we were both secretly waiting for each other. 🥰";
+
+        document.getElementById("loveNext")
+            .style.display = "inline-block";
+
+    } else {
+
+        text.innerHTML =
+        "Are you sure? 😏 Think about it again!";
+
+    }
+}
+
+
+/* ======================================================
+   TYPEWRITER MESSAGE
+====================================================== */
+
+let typingStarted = false;
+
+function startTyping() {
+
+    if(typingStarted) return;
+
+    typingStarted = true;
+
+    const element =
+        document.getElementById("typedMessage");
+
+    let index = 0;
+
+    function type() {
+
+        if(index < birthdayMessage.length) {
+
+            element.innerHTML +=
+                birthdayMessage.charAt(index)
+                    .replace(/\n/g, "<br>");
+
+            index++;
+
+            setTimeout(type, 25);
+
+        } else {
+
+            document.getElementById("messageNext")
+                .style.display = "inline-block";
+
+        }
+
+    }
+
+    type();
+}
+
+
+/* ======================================================
+   LOAD PHOTOS
+====================================================== */
+
+function loadPhotos() {
+
+    const gallery =
+        document.getElementById("gallery");
+
+    gallery.innerHTML = "";
+
+    photos.forEach(function(photo) {
+
+        const img =
+            document.createElement("img");
+
+        img.src = photo;
+
+        img.onerror = function() {
+
+            img.style.display = "none";
+
+        };
+
+        gallery.appendChild(img);
+
+    });
+
+    if(songLink !== "") {
+
+        document.getElementById("songSection")
+            .style.display = "block";
+
+    }
+}
+
+
+/* ======================================================
+   SONG
+====================================================== */
+
+function openSong() {
+
+    window.open(songLink, "_blank");
+
+}
+
+
+/* ======================================================
+   CONFETTI
+====================================================== */
+
+function showConfetti() {
+
+    for(let i = 0; i < 100; i++) {
+
+        const confetti =
+            document.createElement("div");
+
+        confetti.innerHTML =
+            ["❤️","💖","💕","✨","🎉","💗"]
+            [Math.floor(Math.random() * 6)];
+
+        confetti.style.position = "fixed";
+        confetti.style.left =
+            Math.random() * 100 + "vw";
+
+        confetti.style.top = "-20px";
+
+        confetti.style.fontSize =
+            (15 + Math.random() * 25) + "px";
+
+        confetti.style.zIndex = "9999";
+
+        confetti.style.transition =
+            "transform 3s linear, opacity 3s";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(function() {
+
+            confetti.style.transform =
+                `translateY(${window.innerHeight + 100}px) rotate(720deg)`;
+
+            confetti.style.opacity = "0";
+
+        }, 50);
+
+        setTimeout(function() {
+
+            confetti.remove();
+
+        }, 3500);
+
+    }
+
+}
+
+
+/* ======================================================
+   RESTART
+====================================================== */
+
+function restart() {
+
+    location.reload();
+
+}
+
+
+/* ======================================================
+   INSERT NAMES
+====================================================== */
+
+document.querySelectorAll(".wife-name")
+    .forEach(function(element) {
+
+        element.innerText = wifeName;
+
+    });
+
+document.getElementById("your-name")
+    .innerText = yourName;
+
+</script>
+
+</body>
+</html>
+```
